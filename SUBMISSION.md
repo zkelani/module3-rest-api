@@ -1,7 +1,7 @@
 # Phase 1 submission
 Name: Zainab Kelani
 Course or section: INEW-2434 - Advanced Web Programming
-Chosen track: Java Spring Boot / Python FastAPI
+Chosen track: Python FastAPI
 
 ## My campus idea
 My Campus Idea Board is a web-based application that allows students to submit and view ideas for improving campus life, such as creating student clubs, study groups, and environmental projects.
