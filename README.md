@@ -91,3 +91,82 @@ Suggested effort: 90–120 minutes after setup. Instructor supplies due date and
 https://fastapi.tiangolo.com/tutorial/body/
 https://fastapi.tiangolo.com/tutorial/testing/
 https://fastapi.tiangolo.com/tutorial/body-fields/
+## Phase 2: React Frontend Integration
+
+### Project Overview
+This project connects a React frontend to a Python FastAPI backend. Users can view existing campus ideas and submit new ideas through the React application.
+
+### Technologies Used
+- React
+- Vite
+- JavaScript
+- Python FastAPI
+- REST API
+- Postman
+
+### Running the Backend
+Open a terminal in the module3-python-ideas-starter folder.
+
+Install dependencies:
+python -m pip install -r requirements.txt
+
+Start the backend:
+python -m uvicorn app.main:app --port 8080
+
+The backend runs at:
+http://localhost:8080
+
+### Running the Frontend
+Open another terminal in the frontend folder.
+
+Run:
+npm install
+npm run dev
+
+Open:
+http://localhost:5173
+
+Both servers must be running at the same time.
+
+### Features
+- Display ideas retrieved from the FastAPI backend.
+- Add new ideas using a React form.
+- Validate titles before submitting.
+- Display success and error messages.
+- Show loading indicators.
+- Retry failed requests.
+- Update the idea list after successful submissions.
+
+### API Endpoints
+GET /api/ideas - Retrieves existing ideas.
+
+POST /api/ideas - Creates a new idea.
+
+Successful POST requests return HTTP 201.
+
+Invalid requests return HTTP 400.
+
+### Testing
+The React application was tested in Chrome.
+
+Testing included:
+- Retrieving ideas from the backend.
+- Creating new ideas.
+- Verifying HTTP 201 responses.
+- Refreshing the page to retrieve updated ideas.
+- Rejecting blank titles.
+- Checking API responses using Postman.
+
+### Frontend Build
+Run the following command inside the frontend folder:
+
+npm run build
+
+The production build completed successfully.
+
+### Data Storage
+The backend stores ideas temporarily in memory.
+
+Refreshing the browser retrieves the current ideas.
+
+Restarting the backend resets the ideas to the original seed data.
