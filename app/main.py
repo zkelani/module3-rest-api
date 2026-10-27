@@ -1,3 +1,4 @@
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
@@ -6,6 +7,13 @@ from app.store import IdeaStore
 
 def create_app() -> FastAPI:
     app = FastAPI(title="Campus Idea Board")
+    app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=False,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type"],
+    )
     store = IdeaStore()  # Fresh store per app; test clients can be isolated.
 
     # FastAPI normally uses 422 for validation errors. We supply this handler
