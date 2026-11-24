@@ -170,3 +170,64 @@ The backend stores ideas temporarily in memory.
 Refreshing the browser retrieves the current ideas.
 
 Restarting the backend resets the ideas to the original seed data.
+
+### Running with Docker Compose
+
+This project can also run using Docker Desktop.
+
+Requirements:
+- Docker Desktop installed and running
+- Windows Subsystem for Linux (WSL 2) enabled on Windows
+
+From the project root folder, run:
+
+```powershell
+docker compose up -d --build
+```
+
+The API will be available at:
+http://localhost:8080/api/hello
+
+To check the container status:
+
+```powershell
+docker compose ps
+```
+
+To stop and remove the containers:
+
+```powershell
+docker compose down
+```
+## Phase 2A – Docker API Testing and Reflection
+
+### Running Automated Tests
+
+With the Python project environment activated, run:
+
+```powershell
+python -m pytest -v
+```
+
+### Docker Reflection Questions
+
+**1. What is a Docker image?**
+
+A Docker image is a packaged template that contains the
+application, dependencies, and configuration needed to
+run the application.
+
+**2. What is a Docker container?**
+
+A Docker container is a running instance of a Docker
+image. It provides an isolated environment for running
+the application.
+
+**3. Why did your POST data disappear after replacing
+the container?**
+
+The application stores data temporarily in memory.
+When the container is removed and recreated, a new
+application process starts. Since there is no permanent
+database or storage volume, the previously added data
+is lost.
