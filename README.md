@@ -231,3 +231,73 @@ When the container is removed and recreated, a new
 application process starts. Since there is no permanent
 database or storage volume, the previously added data
 is lost.
+
+## SQLite Database Persistence
+
+The Campus Idea Board now uses SQLite instead of in-memory storage. Ideas are stored in a database and remain available after the Docker container is removed and recreated.
+
+### Database Configuration
+
+- Database: SQLite
+- Schema: `app/schema.sql`
+- Database environment variable: `DB_PATH`
+- Docker database path: `/data/ideas.db`
+- Persistent Docker volume: `ideas_data`
+
+### Running with Docker
+
+Start the application:
+
+```bash
+docker compose up -d --build
+```
+
+Verify the container is running:
+
+```bash
+docker compose ps
+```
+
+The API is available at:
+
+http://localhost:8080/api/ideas
+
+### Testing Persistence
+
+Create an idea using POST and retrieve it using GET.
+
+Remove and recreate the container:
+
+```bash
+docker compose down
+docker compose up -d
+docker compose ps
+```
+
+Retrieve the ideas again to confirm that the saved data remains unchanged.
+
+Do not use `docker compose down -v` because it removes the persistent database volume.
+
+### Automated Testing
+
+Run the tests:
+
+```bash
+python -m pytest -v
+```
+
+Results: 6 tests passed, including the new SQLite persistence test.
+
+### Screenshots
+
+All SQLite assignment screenshots are located in `screenshots/sqlite/`.
+
+- `01-created.png`
+- `02-before.png`
+- `03-recreated.png`
+- `04-after.png`
+- `05-invalid.png`
+- `05-invalid-2.png`
+- `06-tests.png`
+
+Previous assignment screenshots have been preserved.

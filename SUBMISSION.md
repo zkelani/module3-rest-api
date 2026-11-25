@@ -119,3 +119,34 @@ Unit tests automatically check individual functions or components to verify that
 **Required test confirmation:**
 
 I ran `python -m pytest -v` in the VS Code terminal. All five tests passed, with zero failures and one dependency warning. No tests were reported as skipped or disabled.
+
+## SQLite Persistence Assignment
+
+### Implementation Summary
+
+I replaced the in-memory storage with a SQLite database to allow campus ideas to persist after the application restarts. I also configured a Docker named volume to preserve the database when the container is removed and recreated.
+
+### Screenshot Evidence
+
+- `Screenshots/sqlite/01-created.png` - Successful POST request returning 201 Created.
+- `Screenshots/sqlite/02-before.png` - GET request before container replacement.
+- `Screenshots/sqlite/03-recreated.png` - Docker container removal and recreation.
+- `Screenshots/sqlite/04-after.png` - GET request after container replacement.
+- `Screenshots/sqlite/05-invalid.png` - Invalid POST request returning 400 Bad Request.
+- `Screenshots/sqlite/05-invalid-2.png` - GET request confirming that invalid data was not added.
+- `Screenshots/sqlite/06-tests.png` - Automated test results.
+
+### Automated Test Results
+
+Command: `python -m pytest -v`
+
+- Total tests: 6
+- Passed: 6
+- Failed: 0
+- Warnings: 1
+
+The new persistence test, `test_idea_persists_after_reopening_store`, passed successfully.
+
+### Assistance Disclosure
+
+I used ChatGPT to assist with SQLite implementation, Docker configuration, automated testing, troubleshooting, and documentation. I executed the commands and tested the application in my local development environment.

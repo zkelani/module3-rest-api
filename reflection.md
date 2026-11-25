@@ -35,3 +35,9 @@ When I restart the backend, the ideas added during the previous session disappea
 ## Conclusion
 
 This assignment helped me understand how a React frontend communicates with a REST API. I learned how to retrieve data using GET requests, create new data using POST requests, handle invalid input, and troubleshoot connection errors. I also practiced testing my application using Postman and Chrome Developer Tools.
+
+## 6. What did I learn from using Docker?
+
+Using Docker Desktop helped me understand how an application can run inside a container instead of relying only on my computer's local setup. I learned how to build and start my FastAPI backend using Docker Compose and check whether the container was running.
+
+I also learned how to stop the container using the terminal. At first, Docker was a little confusing because I had to understand how the Dockerfile, compose.yaml, and .dockerignore files worked together. After testing everything, I was able to run my API successfully through Docker.

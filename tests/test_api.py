@@ -3,9 +3,9 @@ from fastapi.testclient import TestClient
 from app.main import create_app
 
 @pytest.fixture
-def client():
-    # Each test gets its own application and memory store.
-    with TestClient(create_app()) as test_client:
+def client(tmp_path):
+    db_path = tmp_path / "test_ideas.db"
+    with TestClient(create_app(db_path=db_path)) as test_client:
         yield test_client
 
 def test_greeting_returns_json(client):
@@ -26,6 +26,6 @@ def test_valid_post_returns_created_idea(client):
 
     data = response.json()
 
-    assert data["id"] == 3
+    assert data["id"] == 1
     assert data["title"] == "Start a robotics club"
     assert data["category"] == "clubs"
